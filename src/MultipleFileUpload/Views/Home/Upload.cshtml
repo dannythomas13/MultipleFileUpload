@@ -1,0 +1,32 @@
+﻿@section Scripts {
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/app-uploads.js"></script>
+    <script src="~/js/uploadsController.js"></script>
+}
+
+<div ng-app="app-uploads">
+    <div ng-controller="uploadsController as vm">
+        <div class="row">
+
+            <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+            <div>{{vm.message}}</div>
+
+            <div>{{vm.retrieved}}</div>
+
+            <div class="col-md-6">
+                <h1>Upload</h1>
+
+                <form method="post" asp-action="Upload" asp-controller="Home" enctype="multipart/form-data"
+                      ng-submit="vm.upload()">
+                    <div class="form-group">
+                        <input type="file" name="files" multiple />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Upload" class="btn btn-success"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
